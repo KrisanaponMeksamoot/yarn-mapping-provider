@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 public class Main implements ModInitializer {
 	public static final String MODID = "yarn_mapping_provider";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
+	private static boolean is_success = false;
 
 	@Override
 	public void onInitialize() {
@@ -23,9 +24,14 @@ public class Main implements ModInitializer {
 			field.setAccessible(true);
 			field.set(FabricLoader.getInstance(),null);
 			FabricLoader.getInstance().getMappingResolver();
+			is_success = true;
 			LOGGER.info("Yarn Mapping Provider initialized!");
 		} catch (IOException|RuntimeException | NoSuchFieldException | IllegalAccessException e) {
 			LOGGER.error("Yarn Mapping Provider failed: {}",e.toString());
 		}
+	}
+
+	public static boolean isSuccess() {
+		return is_success;
 	}
 }
