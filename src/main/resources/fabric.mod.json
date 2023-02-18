@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "yarn_mapping_provider",
+  "version": "${version}",
+
+  "name": "Yarn Mapping Provider",
+  "description": "Provide Yarn mapping for MappingResolver",
+  "authors": [
+    "Krisanapon Meksamoot"
+  ],
+  "contact": {
+    "homepage": "https://github.com/KrisanaponMeksamoot",
+    "sources": "https://github.com/KrisanaponMeksamoot/yarn-mapping-provider"
+  },
+
+  "license": "Unlicense",
+  "icon": "assets/yarn_mapping_provider/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.kris.ymp.Main"
+    ]
+  },
+  "mixins": [
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.4",
+    "minecraft": ">=1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
