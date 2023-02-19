@@ -45,7 +45,7 @@ public class YmpConfig {
             throw new RuntimeException(e);
         }
     }
-    public void reloadFromFile() throws IOException {
+    public void reloadFromFile() throws IOException,FileNotFoundException,JsonParseException {
         config = new Gson().fromJson(new String(Files.readAllBytes(configFile.toPath())),ConfigValues.class);
     }
     public void updateFile() throws IOException {
