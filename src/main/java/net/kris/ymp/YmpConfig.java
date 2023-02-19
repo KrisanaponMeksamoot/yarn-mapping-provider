@@ -3,6 +3,7 @@ package net.kris.ymp;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.util.HashMap;
 
 import com.google.gson.Gson;
@@ -18,7 +19,7 @@ public class YmpConfig {
         this.configFile = configFile;
         try {
             reloadFromFile();
-        } catch (NoSuchFieldException|JsonParseException e) {
+        } catch (NoSuchFileException|JsonParseException e) {
             config = new ConfigValues();
             updateFile();
         }
@@ -44,7 +45,7 @@ public class YmpConfig {
             throw new RuntimeException(e);
         }
     }
-    public void reloadFromFile() throws IOException,NoSuchFieldException {
+    public void reloadFromFile() throws IOException {
         config = new Gson().fromJson(new String(Files.readAllBytes(configFile.toPath())),ConfigValues.class);
     }
     public void updateFile() throws IOException {
