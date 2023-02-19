@@ -1,7 +1,6 @@
 package net.kris.ymp;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.HashMap;
@@ -19,7 +18,7 @@ public class YmpConfig {
         this.configFile = configFile;
         try {
             reloadFromFile();
-        } catch (FileNotFoundException|JsonParseException e) {
+        } catch (NoSuchFieldException|JsonParseException e) {
             config = new ConfigValues();
             updateFile();
         }
@@ -45,7 +44,7 @@ public class YmpConfig {
             throw new RuntimeException(e);
         }
     }
-    public void reloadFromFile() throws IOException,FileNotFoundException,JsonParseException {
+    public void reloadFromFile() throws IOException,NoSuchFieldException {
         config = new Gson().fromJson(new String(Files.readAllBytes(configFile.toPath())),ConfigValues.class);
     }
     public void updateFile() throws IOException {
